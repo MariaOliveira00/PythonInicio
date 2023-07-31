@@ -1,0 +1,42 @@
+import tkinter as tk
+from tkinter import image_types, messagebox
+
+
+def fazer_login():
+    usuario = entry_usuario.get()
+    senha = entry_senha.get()
+
+    if usuario == "usuario" and senha == "senha":
+        messagebox.showinfo("Login", "Login realizado com sucesso!")
+    else:
+        messagebox.showerror("Login", "Usuário ou senha incorretos.")
+
+janela = tk.Tk()
+janela.title("Tela de Login")
+
+
+imagem = image_types.resize((300, 200))  # Redimensione a imagem para ajustar à janela
+imagem = imagem.PhotoImage(imagem)
+
+
+# Exibir a imagem na tela
+label_imagem = tk.Label(janela, image=imagem)
+label_imagem.pack()
+
+# Labels e Entradas de texto
+label_usuario = tk.Label(janela, text="Usuário:")
+label_usuario.pack()
+entry_usuario = tk.Entry(janela)
+entry_usuario.pack()
+
+label_senha = tk.Label(janela, text="Senha:")
+label_senha.pack()
+entry_senha = tk.Entry(janela, show="*")
+entry_senha.pack()
+
+# Botão de Login
+botao_login = tk.Button(janela, text="Login", command=fazer_login)
+botao_login.pack()
+
+# Iniciar o loop da interface gráfica
+janela.mainloop()
